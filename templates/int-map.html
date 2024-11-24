@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Map User Location</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <style>
+        #map {
+            height: 350px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Map User Location</h1>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+<script>
+    // Ensure the DOM is loaded before initializing the map
+    document.addEventListener("DOMContentLoaded", function () {
+        // Create a map centered on Hyderabad (Lat: 17.40, Lon: 78.47)
+        var map = L.map('map', {
+            zoomControl: true, // Enable zoom control
+            scrollWheelZoom: true // Allow zooming with mouse wheel
+        }).setView([17.40, 78.47], 11);  // Start with zoom level 11
+
+        // Add OpenStreetMap tile layer to the map
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19, // Max zoom level
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // Watch geolocation to get the live position
+        navigator.geolocation.watchPosition(success, error);
+
+        let marker, circle, zoomed;
+
+        // Success function: runs when geolocation is successful
+        function success(pos) {
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+            const accuracy = pos.coords.accuracy;
+
+            // Log the detected position and accuracy for debugging
+            console.log(`Latitude: ${lat}, Longitude: ${lng}, Accuracy: ${accuracy} meters`);
+
+            // Remove previous marker and circle if they exist
+            if (marker) {
+                map.removeLayer(marker);
+                map.removeLayer(circle);
+            }
+
+            // Center map on the current position
+            map.setView([lat, lng]);
+
+            // Add a marker for the user's current position
+            marker = L.marker([lat, lng]).addTo(map);
+
+            // Add a circle to represent the accuracy of the geolocation
+            circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+
+            // Allow zoom to the bounds of the accuracy circle, but allow zooming out
+            if (!zoomed) {
+                zoomed = map.fitBounds(circle.getBounds(), { maxZoom: 16 });
+            }
+        }
+
+        // Error function: runs if geolocation fails
+        function error(err) {
+            if (err.code === 1) {
+                alert("Please allow geolocation access.");
+            } else {
+                alert("Cannot get current location.");
+            }
+        }
+    });
+</script>
+</body>
+</html>
