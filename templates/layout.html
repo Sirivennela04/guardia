@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Guardia{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <h2>Guardia</h2>
+        </div>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('map') }}">Interactive Map</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+          <li><a href="{{ url_for('predict') }}">Know Your Safety</a></li>
+          <li>
+            <div class="sos-button">
+              <button class="sos-btn" onclick="sendSOS()">SOS</button>
+          </div>
+          
+          <script>
+            function sendSOS() {
+              fetch('/send_sos', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                // No need for 'emergency' unless you want to use it on the server
+                body: JSON.stringify({})
+              })
+              .then(response => response.json())
+              .then(data => {
+                alert(data.message);  // Ensure the response has a 'message' key
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+              });
+            }
+          </script>          
+            <a href="#">More</a>
+            <ul class="dropdown">
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="auth-buttons">
+          {% if current_user.is_authenticated %}
+            <a href="{{ url_for('profile') }}" class="profile-logo">
+              <img src="{{ url_for('static', filename='images/profile-logo.png') }}" alt="Profile" />
+            </a>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+          {% else %}
+            <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+            <a href="{{ url_for('register') }}" class="register-btn">Register</a>
+          {% endif %}
+        </div>        
+      </nav>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer class="footer">
+      <p>Guardia - Ensuring Safety</p>
+      <div class="social-media">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+      </div>
+    </footer>
+  </body>
+</html>
