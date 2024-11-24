@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home - Guardia{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    {% if current_user.is_authenticated %}
+      <h1>Welcome to Guardia, {{ current_user.username }}!</h1>
+      <h6>Your personal safety companion, always with you.</h6>
+      <a href="{{ url_for('profile') }}" class="cta-button">View Your Profile</a>
+    {% else %}
+      <h1>Welcome to Guardia</h1>
+      <h6>Your personal safety companion, always with you.</h6>
+      <a href="{{ url_for('map') }}" class="cta-button">Explore Safety Map</a>
+    {% endif %}
+  </div>
+</section>
+<section class="features">
+  <h2>Our Features</h2>
+  <div class="feature-cards">
+    <div class="card">
+      <h3>Real-time Location Tracking</h3>
+      <p>Stay informed about your location and surroundings.</p>
+    </div>
+    <div class="card">
+      <h3>Emergency Alerts</h3>
+      <p>Instant alerts to your trusted contacts in emergencies.</p>
+    </div>
+    <div class="card">
+      <h3>Trusted Contact Notifications</h3>
+      <p>Notify your loved ones when you need help.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
