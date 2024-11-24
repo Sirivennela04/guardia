@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}Safety Map - Guardia{% endblock %}
+
+{% block content %}
+<section class="map-container">
+    <h1>Explore Safe Zones</h1>
+    <input type="text" id="location-search" placeholder="Search for a location..." class="search-bar">
+    <div class="filter-buttons">
+        <button onclick="filterMarkers('safe')">Search</button>
+    </div>
+    <div id="map">{% include 'int-map.html' %}</div>
+    <div class="map-info">
+        <p>Use our interactive map to find safe locations nearby. Report incidents, and see safety scores of different areas.</p>
+    </div>
+</section>
+{% endblock %}
