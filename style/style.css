@@ -1,0 +1,388 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 0;
+}
+
+.logo {
+    background-size: contain; /* Adjust the size to fit */
+    background-repeat: no-repeat;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 20px;
+    height: 50px; /* Adjust as needed */
+    width: 100px; /* Adjust to control the width */
+    margin-right: 10px;
+}
+
+/* Style for the new logo in the header */
+.logo-header {
+    height: 50px; /* Adjust as needed */
+    width: auto;
+    margin-right: 10px; /* Adjust to space around logo */
+}
+
+:root {
+    --primary-color: #3A3E8C; /* Blue shade from logo background */
+    --secondary-color: #FFFFFF; /* White for text */
+    --accent-color: #5E66D2; /* Lighter blue for accents */
+    --sos-color: #FF4444; /* Bright red for SOS button */
+    --sos-hover-color: #CC0000; /* Darker red on hover */
+}
+
+nav ul {
+    list-style: none;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    font-size: 25px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown a {
+    color: #333;
+    padding: 10px;
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #f5a623;
+    color: #fff;
+}
+
+/* Login and Register Buttons */
+.auth-buttons a {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.auth-buttons a:hover {
+    background-color: #4a5edb; /* Slightly darker blue */
+}
+
+/* SOS Button */
+.sos-button {
+    margin-left: 20px;
+}
+
+.sos-btn {
+    background-color: var(--sos-color);   /* Bright red for visibility */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.sos-btn:hover {
+    background-color: var(--sos-hover-color);  /* Darker red on hover */
+}
+
+/* Hero Section */
+.hero {
+    background-image: linear-gradient(15deg, #4a90e2 0%, #ffffff 100%);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero h6 {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Features Section */
+.features {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.features h2 {
+    color: #273c75;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    width: 25%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card h3 {
+    color: #4a90e2;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+}
+
+/* Different background colors for cards */
+.card:nth-child(1) { background-color: #eaf0f9; }
+.card:nth-child(2) { background-color: #ffecd2; }
+.card:nth-child(3) { background-color: #fbe8a6; }
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    background-color: #273c75;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.social-media a {
+    margin: 0 10px;
+    color: #ffffff;
+    transition: color 0.3s;
+    color: var(--secondary-color);
+}
+
+.social-media a:hover {
+    color: #f5a623;
+}
+
+/* Map Section */
+.map-container {
+    padding: 20px;
+    text-align: center;
+    color: #000;
+    background-color: #eaf0f9;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+    border-radius: 5px;
+}
+
+/* About Section */
+.about {
+    padding: 50px 20px;
+    background-color: #eaf0f9; /* Matching color with the home page palette */
+    text-align: center;
+    color: #333;
+}
+
+.about h1 {
+    font-size: 2.5em;
+    color: #273c75;
+    margin-bottom: 10px;
+}
+
+.about p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+.about h2 {
+    font-size: 1.8em;
+    color: #4a90e2;
+    margin-top: 30px;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #4a90e2;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.social-media a {
+    margin: 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.social-media a:hover {
+    color: #f5a623;
+}
+
+.button-primary {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.profile {
+    padding: 50px 20px;
+    text-align: center;
+    color: #333;
+    background-color: #eaf0f9;
+}
+
+.profile-details {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.profile-details img {
+    display: block;
+    margin: 0 auto 20px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.profile-details label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+}
+
+.profile-details input,
+.profile-details textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profile-details .button-primary {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.auth-page {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.auth-page h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.auth-page form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.auth-page .input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.auth-page .button-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-page .button-primary:hover {
+    background-color: var(--accent-color);
+}
+
+.auth-page p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.auth-page p a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.auth-page p a:hover {
+    text-decoration: underline;
+}
