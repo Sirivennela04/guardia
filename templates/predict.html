@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+{% block title %}Predict - Guardia{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <ul class="flash-messages">
+    {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+{% endwith %}
+
+<section class="predict-page">
+  <h1>Make a Prediction</h1>
+  <form method="POST" action="{{ url_for('predict') }}">
+    <label for="area">Area</label>
+    <select id="area" name="area">
+      <option value="0">Adyar</option>
+      <option value="1">Ramapuram</option>
+      <option value="2">West Mambalam</option>
+    </select>
+    <br>
+
+    <label for="zone">Zone</label>
+    <select id="zone" name="zone">
+      <option value="0">Aanandam Nagar</option>
+      <option value="1">Ambal Nagar</option>
+      <option value="2">Amman Nagar</option>
+      <option value="3">Baktavatsalm Nagar</option>
+      <option value="4">Chidambaram Nagar</option>
+      <option value="5">Easwaran Nagar</option>
+      <option value="6">Gokulam Colony</option>
+      <option value="7">Kasi Viswanathar Colony</option>
+      <option value="8">Moogambigai Nagar</option>
+      <option value="9">Moovendar Colony</option>
+      <option value="10">Mullai Nagar</option>
+      <option value="11">Pannerselvam Nagar</option>
+      <option value="12">Postal Colony</option>
+      <option value="13">RamaKrishnapuram</option>
+      <option value="14">Royala Nagar</option>
+      <option value="15">Sakthi Nagar</option>
+      <option value="16">Shastri Nagar</option>
+      <option value="17">South Kesavaperumalpuram</option>
+      <option value="18">Subramaniam Nagar</option>
+      <option value="19">Suresh Nagar</option>
+      <option value="20">Tamil Nagar</option>
+      <option value="21">Teachers Colony</option>
+      <option value="22">Thiru Nagar</option>
+      <option value="23">Venkateshwar Nagar</option>
+      <option value="24">Venkateshwara Nagar</option>
+      <option value="25">Vivekanandapuram</option>
+    </select>
+    <br>
+
+    <label for="time">Time</label>
+    <select id="time" name="time">
+      <option value="0">Afternoon</option>
+      <option value="1">Evening</option>
+      <option value="2">Morning</option>
+      <option value="3">Night</option>
+    </select>
+    <br>
+
+    <label for="people_frequency">People Frequency</label>
+    <select id="people_frequency" name="people_frequency">
+      <option value="0">High</option>
+      <option value="1">Low</option>
+      <option value="2">Medium</option>
+    </select>
+    <br>
+
+    <label for="police_station">Is there a Police Station?</label>
+    <select id="police_station" name="police_station">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+    <br>
+
+    <label for="bar">Is there a Bar?</label>
+    <select id="bar" name="bar">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+    <br>
+
+    <label for="tier">Tier</label>
+    <select id="tier" name="tier">
+      <option value="0">Inner</option>
+      <option value="1">Middle</option>
+      <option value="2">Outer</option>
+    </select>
+    <br>
+
+    <label for="residence_level">Residence Level</label>
+    <select id="residence_level" name="residence_level">
+      <option value="0">High</option>
+      <option value="1">Low</option>
+      <option value="2">Medium</option>
+    </select>
+    <br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  {% if prediction %}
+  <div class="result">
+    <h3>Prediction Result:</h3>
+    <p><strong>{{ prediction }}</strong></p>  <!-- Match with backend variable -->
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
